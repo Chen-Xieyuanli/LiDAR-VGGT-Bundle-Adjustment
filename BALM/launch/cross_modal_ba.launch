@@ -1,0 +1,21 @@
+<launch>
+	<arg name="rviz" default="true" />
+
+	<param name="voxel_size" type="double" value="2" />
+	<param name="file_path" type="string" value="$(find balm2)" />
+    <!-- chunk num -->
+    <param name="chunk_num" type="int" value="47" />
+	<!-- data base path -->
+	<param name="data_base_path" type="string" value="$(find balm2)/data/" />
+	<!-- result path -->
+	<param name="result_path" type="string" value="$(find balm2)/data/result/" />
+	<!-- leaf size for downsample -->
+	<param name="leaf_size" type="double" value="0.3" />
+
+	<node pkg="balm2" type="cross_modal_ba" name="cross_modal_ba" output="screen" />
+
+	<group if="$(arg rviz)">
+		<node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find balm2)/rviz_cfg/back.rviz" />
+	</group>  
+
+</launch>

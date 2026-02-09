@@ -1,0 +1,33 @@
+<launch>
+  <arg name="rviz" default="true"/>
+  <arg name="if_visualize" default="true"/>
+  <arg name="path" default="/home/jack/FastLab/Multi-UAV-Map-Post-Process/data/Multi_drone/zjunlict_lab/drone0/"/>
+  <arg name="origin_json_name" default="pose.json"/>
+
+  <node pkg="offline_refinement" type="offline_refinement" name="offline_refinement" output="screen">
+    <!-- 可视化 -->
+    <param name="if_visualize" type="bool" value="$(arg if_visualize)"/>
+
+    <!-- BALM2 -->
+    <param name="voxel_size" type="double" value="1" />    <!-- For plane detection -->
+    <param name="min_plane_size" type="int" value="10" />  <!-- For plane detection -->
+    <param name="keyframe_size" type="int" value="3" />    <!-- Each keyframe is made of {keyframe_size} frames of input pcl -->
+    <param name="BAradius" type="double" value="5" />    <!-- Each keyframe is made of {keyframe_size} frames of input pcl -->
+
+    <!-- 回环匹配 -->
+    <param name="stack_size" type="int" value="30"/>  <!-- stack lidar frame for better gicp -->
+    <param name="leaf_size" type="double" value="0.2"/>  <!-- stack lidar frame for better gicp -->
+
+    <!-- 数据路径 -->
+    <param name="data_path" type="string" value="$(arg path)"/>
+    <param name="loop_path" type="string" value="$(arg path)"/>
+  </node>
+
+  <group if="$(arg rviz)">
+    <node name="view_pcd" pkg="bag2pcd" type="view_pcd" output="screen">
+      <param name="floder_pth" value="$(arg path)"/>
+      <param name="json_name" value="$(arg origin_json_name)"/>
+    </node>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find bag2pcd)/launch/1.rviz" />
+  </group>
+</launch>

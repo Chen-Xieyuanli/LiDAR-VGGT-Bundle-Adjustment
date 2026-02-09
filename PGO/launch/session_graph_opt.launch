@@ -1,0 +1,21 @@
+<launch>
+  <arg name="rviz" default="false"/>
+  <arg name="dataset" default="AMtown01"/> 
+  <!-- 启动 loop_graph_opt 节点 -->
+  <node pkg="session_align" type="session_graph_opt" name="session_graph_opt" output="screen">
+    <!-- VGGT session 参数 -->
+    <param name = "session_num" type="int" value="48"/>
+    <param name = "session_size" type="int" value="40"/>
+    <param name = "session_overlap" type="int" value="15"/>
+    <!-- 数据路径参数 -->
+    <param name="dataset" type="string" value="$(arg dataset)"/>
+    <param name = "base_data_path" type="string" value="/root/FASTLIO/LVGGT_Data/$(arg dataset)/chunk_"/>
+    <!-- 降采样参数 -->
+    <param name = "voxel_size" type="double" value="0.65"/>
+    <!-- 保存的chunk pcd -->
+    <param name = "save_pcd_path" type="string" value="/root/FASTLIO/LVGGT_Data/$(arg dataset)/vggtpgo_chunk/"/>
+
+  </node>
+  <!-- 启动 RViz 可视化 -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find session_align)/rviz/loop_ba.rviz" output="screen"/>
+</launch>

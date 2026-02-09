@@ -1,0 +1,21 @@
+<launch>
+  <arg name="rviz" default="true"/>
+  <!-- 启动 loop_graph_opt 节点 -->
+  <node pkg="offline_refinement" type="loop_graph_opt" name="loop_graph_opt" output="screen">
+    <!-- 数据路径 -->
+    <!-- <param name="data_path" type="string" value="/home/jack/FastLab/Multi_drone/Flying_Ground/drone"/>
+    <param name="loop_path" type="string" value="/home/jack/FastLab/Multi_drone/Flying_Ground/loop_all.txt"/> -->
+    <param name="data_path" type="string" value="/mnt/e/GEODE/Tunneling_Tunnel/drone"/>
+    <param name="loop_path" type="string" value="/mnt/e/GEODE/Tunneling_Tunnel/result_ring/loops.txt"/>
+    <param name="origin_pose_name" type="string" value="pose_correct"/>
+
+    
+    <!-- 输出回环优化后的位姿 -->
+    <param name = "pose_opt_path" type="string" value="/mnt/e/GEODE/Tunneling_Tunnel/drone"/>
+    <!-- 机器人数量 -->
+    <param name = "robot_num" type="int" value="3"/>
+    
+  </node>
+  <!-- 启动 RViz 可视化 -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find offline_refinement)/rviz/loop_ba.rviz" output="screen"/> -->
+</launch>

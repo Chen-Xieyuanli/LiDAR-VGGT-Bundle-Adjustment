@@ -1,0 +1,20 @@
+<launch>
+	<arg name="rviz" default="true" />
+    <!-- chunk num -->
+    <param name="chunk_num" type="int" value="1" />
+	<!-- data base path -->
+	<param name="data_base_path" type="string" value="$(find balm2)/data/" />
+	<!-- result path -->
+	<!-- <param name="result_path" type="string" value="$(find balm2)/data/result/" /> -->
+	<param name="result_path" type="string" value="$(find balm2)/data/result/" />
+
+    <!-- visualization -->
+    <param name="visualize_time" type="double" value="8.0" />
+
+	<node pkg="balm2" type="trans_to_chunk" name="trans_to_chunk" output="screen" />
+
+	<group if="$(arg rviz)">
+		<node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find balm2)/rviz_cfg/trans_pcd.rviz" />
+	</group>  
+
+</launch>

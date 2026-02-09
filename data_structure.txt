@@ -1,0 +1,21 @@
+最底层多模态的BALM2:
+
+Base——|                     |——pose.txt(TUM: time x y z qx qy qz qw)
+      |          |——camera——|
+      |          |          |——pcd/
+      |——chunk0——           
+      |          |          |——pose.txt(TUM)
+      |          |——lidar—— |
+      |                     |——pcd/ 
+      |——chunk1
+      |    .
+      |    .
+      |    .
+      |
+      
+      
+上层的VGGT点云的HBA：
+
+Base——|——pcd/chunk0.pcd chunk1.pcd........(body系)
+      |
+      |——pose.txt(存储每个chunk第一帧世界系的位姿)

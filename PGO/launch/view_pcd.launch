@@ -1,0 +1,10 @@
+<launch>
+    <arg name="dataset" default="AMtown01"/>
+    <node name="pcd_publisher" pkg="session_align" type="pcd_publisher" output="screen">
+        <param name="pcd_dir" value="/root/FASTLIO/LVGGT_Data/$(arg dataset)/vggtpgo_chunk/"/>
+        <param name="voxel_size" value="0.35"/>
+    </node>
+
+    <!-- 启动 RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find session_align)/rviz/pcd_view.rviz"/>
+</launch>
