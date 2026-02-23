@@ -1,5 +1,19 @@
 # LiDAR-VGGT-Bundle-Adjustment
-This repository is built on [BALM2](https://github.com/hku-mars/BALM), and is an enhanced version for cross-modal LiDAR and VGGT to jointly optimize the poses of LiDAR and VGGT based on the point cloud association.  It is worth noting that the optimization here is not based on optimizing image feature points like visual BA, but rather on the geometric structure of point clouds.
+This repository contains the code for our RA-L paper, LiDAR-VGGT: Cross-Modal Coarse-to-Fine Fusion for Globally Consistent and Metric-Scale Dense Mapping. [[Arxiv](https://arxiv.org/abs/2511.01186)][[IEEE](https://ieeexplore.ieee.org/document/11399876/)]
+
+If you find this work useful, please cite:
+```bibtex
+@ARTICLE{wang2026ral-lidarvggt,
+  journal={IEEE Robotics and Automation Letters (RA-L)},
+  title={LiDAR-VGGT: Cross-Modal Coarse-to-Fine Fusion for Globally Consistent and Metric-Scale Dense Mapping},
+  author={Lijie Wang and Lianjie Guo and Ziyi Xu and Qianhao Wang and Fei Gao and Xieyuanli Chen},
+  year={2026}
+}
+
+
+
+
+LiDAR-VGGT is built on [BALM2](https://github.com/hku-mars/BALM), and is an enhanced version for cross-modal LiDAR and VGGT to jointly optimize the poses of LiDAR and VGGT based on the point cloud association.  It is worth noting that the optimization here is not based on optimizing image feature points like visual BA, but rather on the geometric structure of point clouds.
 
 
 
